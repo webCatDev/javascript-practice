@@ -24,38 +24,28 @@ GOOD LUCK 😀
 
 */
 
-function whoWon(dolphinsScore = [], koalasScores = []) {
-  if (!Array.isArray(dolphinsScore) || !Array.isArray(koalasScores)) {
-    return console.log("Please send scores as array (dolphins first)");
-  }
-
-  const averageScoreDolphins =
-    dolphinsScore.reduce((acc, score) => acc + score) / dolphinsScore.length;
-
-  const averageScoreKoalas =
-    koalasScores.reduce((acc, score) => acc + score) / koalasScores.length;
-
+function whoWon(d1,d2,d3,k1,k2,k3) {
   if (
-    dolphinsScore.length > 3 ||
-    dolphinsScore.length !== koalasScores.length
+  typeof d1 !== "number" &&
+  typeof d2 !== "number" &&
+  typeof d3 !== "number" &&
+  typeof k1 !== "number" &&
+  typeof k2 !== "number" &&
+  typeof k3 !== "number"&&
+  d1===undefined|| 
+  d2===undefined|| 
+  d3===undefined|| 
+  k1===undefined|| 
+  k2===undefined|| 
+  k3===undefined 
   ) {
-    return console.log("Illegal scores, please re-write scores");
+    return console.log("Please send scores as dolphin score(1,2,3) and koalas score(1,2,3), 6 numbers in total");
   }
 
-  if (dolphinsScore.length < 3 && averageScoreDolphins > averageScoreKoalas) {
-    console.log("Match didn't finished yet");
-    return console.log("Dolphins are ahead");
-  }
+  const averageScoreDolphins = (d1+d2+d3) / 3;
 
-  if (dolphinsScore.length < 3 && averageScoreDolphins < averageScoreKoalas) {
-    console.log("Match didn't finished yet");
-    return console.log("Koalas are ahead");
-  }
+  const averageScoreKoalas = (k1+k2+k3) / 3;
 
-  if (dolphinsScore.length < 3 && averageScoreDolphins === averageScoreKoalas) {
-    console.log("Match didn't finished yet");
-    return console.log("It is draw now");
-  }
 
   if (
     averageScoreDolphins > averageScoreKoalas &&
@@ -79,24 +69,23 @@ function whoWon(dolphinsScore = [], koalasScores = []) {
   ) {
     return console.log("It is a draw");
   }
-
   return console.log("No winner this time");
 }
 
 console.log("Case 1");
-whoWon([96, 108, 89], [88, 91, 110]);
+whoWon(96, 108, 89, 88, 91, 110);
 
 console.log("Case 2");
-whoWon([150, 120, 100], [90, 80, 75]);
+whoWon(150, 120, 100, 90, 80, 75);
 
 console.log("Case 3");
-whoWon([97, 112, 101], [109, 95, 123]);
+whoWon(97, 112, 101, 109, 95, 123);
 
 console.log("Case 4");
-whoWon([97, 112, 101], [109, 95, 106]);
+whoWon(97, 112, 101, 109, 95, 106);
 
 console.log("Case 5");
-whoWon(0, 0);
+whoWon("hello", "dolphins");
 
-console.log("Case 6");
-whoWon([90, 110], [111, 120]);
+console.log("Case 6")
+whoWon(1,1,1)
